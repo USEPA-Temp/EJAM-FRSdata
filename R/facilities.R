@@ -2,6 +2,8 @@
 #' @docType data
 #' @title data.table of locations of points such as EPA-regulated facilities
 #'
+#' This is an old file you could get sites from via registry ID lookup, not NAICS.
+#' 
 #' Needs to be updated to latest data available... see \link{frs}
 #'
 #' and why does it have to use facilities_prep() instead of just doing that before saving the dataset and building the package?
