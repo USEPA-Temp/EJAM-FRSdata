@@ -1,6 +1,8 @@
 #' @name frs_naics_2016
 #' @docType data
 #' @title data.table of NAICS code(s) for each EPA-regulated site in Facility Registry System
+#' 
+#' @description 
 #'  \preformatted{
 #' one row per site-NAICS pair, so multple rows for one site if it is in multiple NAICS.
 #' That file was called facdata in 2016. 
