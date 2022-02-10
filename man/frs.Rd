@@ -6,6 +6,11 @@
 \title{data.table of EPA-regulated sites in Facility Registry System
 
 This is now the 2021 version of FRS.
+You could look up sites by registry id, 
+but to look up by naics you need the long file with 
+one row per site-NAICS pair, so multple rows for one site if it is in multiple NAICS.
+That file was called facdata
+
 The 2016 version had only 1,129,481 rows (facilities), 22 columns.
 The 2021-09 version has 3.1 million rows, and currently retained only 9 columns for this package.
   \preformatted{
@@ -18,8 +23,8 @@ The 2021-09 version has 3.1 million rows, and currently retained only 9 columns 
   $ INTEREST_TYPES: chr  "ICIS-NPDES UNPERMITTED"
   $ NAICS_CODES   : chr  NA NA NA "928110" ...
   $ SIC_CODES     : chr  "2091" "4952" "5171" "9711, OWNE" ...
-  $ LAT           : num  51.9 51.9 51.9 51.9 51.9 ...
-  $ LONG          : num  -177 -177 -177 -177 -177 ...
+  $ lat           : num  51.9 51.9 51.9 51.9 51.9 ...
+  $ lon          : num  -177 -177 -177 -177 -177 ...
 
 
   old 2016 file format for facilities table:
@@ -54,6 +59,11 @@ $ FAC_Z                 : num  2253  ... z location for quadtree
 data.table of EPA-regulated sites in Facility Registry System
 
 This is now the 2021 version of FRS.
+You could look up sites by registry id, 
+but to look up by naics you need the long file with 
+one row per site-NAICS pair, so multple rows for one site if it is in multiple NAICS.
+That file was called facdata
+
 The 2016 version had only 1,129,481 rows (facilities), 22 columns.
 The 2021-09 version has 3.1 million rows, and currently retained only 9 columns for this package.
   \preformatted{
@@ -66,8 +76,8 @@ The 2021-09 version has 3.1 million rows, and currently retained only 9 columns 
   $ INTEREST_TYPES: chr  "ICIS-NPDES UNPERMITTED"
   $ NAICS_CODES   : chr  NA NA NA "928110" ...
   $ SIC_CODES     : chr  "2091" "4952" "5171" "9711, OWNE" ...
-  $ LAT           : num  51.9 51.9 51.9 51.9 51.9 ...
-  $ LONG          : num  -177 -177 -177 -177 -177 ...
+  $ lat           : num  51.9 51.9 51.9 51.9 51.9 ...
+  $ lon          : num  -177 -177 -177 -177 -177 ...
 
 
   old 2016 file format for facilities table:

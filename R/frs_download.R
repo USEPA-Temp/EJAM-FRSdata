@@ -15,4 +15,4 @@ frs_download <- function(folder='.', zfile = 'national_single.zip', zipbaseurl =
   # These should be able to download and cleanup the EPA Facility Registry System data
   # for use in a package
   # library(readr)
-  }
+}

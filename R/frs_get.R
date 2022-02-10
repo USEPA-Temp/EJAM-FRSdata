@@ -1,28 +1,53 @@
 #' download, unzip, read, clean the Facility Registry System dataset
 #' 
 #' This is just a helper function used to create the dataset saved as data for use in EJAM.
-#'   A large share of all the FRS sites (a third perhaps?) have no latitude or longitude
+#'   It invisibly returns the table of data as a data.table.
+#'   
+#' @details 
+#' \preformatted{
+#' 
+#'  As of 2022-01-31:
+#'  Only 1/4 have both location and some industry code:  27% have location and industry code.
+#'  Only 1/5 to 1/3 have NAICS or at least SIC.
+#'  2/3 have location.
+#'  2/3 lack industry code, 1/3 lack location.
+#'  
+#'  67 percent HAVE NEITHER NAICS NOR SIC CODES.
+#'  11 percent have both NAICS and SIC, 
+#'  9.5 percent have just NAICS = 
+#'     21 percent have NAICS. 
+#'  12.5 percent have just SIC. 
+#'  
+#'   
+#'   A large share of all the FRS sites (almost a third) have no latitude or longitude
 #'   Those with lat lon have problems also:
 #'   Some are are not in the USA.
 #'   Some have errors in country code.
 #'   Some use alternate ways of specifying USA.
+#' }
 #'
 #' @param folder path
+#' @param date default is Sys.Date() which is today, but this is used as an attribute assigned to the results, 
+#'   representing the vintage, such as the date the frs was downloaded, obtained. 
 #' @param zfile name of zipfile
 #' @param zipbaseurl url (without zipfile)
 #' @param csvfile local filename from inside zip
+#' @param downloaded default is FALSE, but can set to TRUE if previously downloaded the zipfile and now just need to unzip and read it.
 #'
 #' @seealso  \link{frs_get} which uses \link{frs_download} \link{frs_unzip} \link{frs_read} \link{frs_clean}
 #'
 #' @export
 #'
-frs_get <- function(folder='.', zfile = 'national_single.zip', zipbaseurl = 'https://ofmext.epa.gov/FLA/www3/state_files/', csvfile='NATIONAL_SINGLE.CSV') {
+frs_get <- function(folder='.', date=Sys.Date(), zfile = 'national_single.zip', zipbaseurl = 'https://ofmext.epa.gov/FLA/www3/state_files/', csvfile='NATIONAL_SINGLE.CSV', downloaded=FALSE) {
   # script to download and unzip EPA FRS
-  frs_download(folder = folder, zfile = zfile, zipbaseurl = zipbaseurl)
+  if (!downloaded) {
+    frs_download(folder = folder, zfile = zfile, zipbaseurl = zipbaseurl)
+  }
   frs_unzip(zfile = file.path(folder, zfile))
   frs <- frs_read(file.path(folder, csvfile))
   frs <- frs_clean(frs) # drop if no latitude info, convert to data.table not tibble or simple data.frame
-  return(frs)
+  attr(frs, 'date') <- date
+  invisible(frs)
   # save(frs, file = './data/frs.rdata')
   
   
@@ -93,11 +118,8 @@ frs_get <- function(folder='.', zfile = 'national_single.zip', zipbaseurl = 'htt
   # > dim(frs)
   # [1] 3144206      39
   
-  #### save as Rdata for package?? ####
-  
-  # facilities <- frs
-  # save(facilities, file = './data/facilities.rdata')
-  ## or maybe save as frs?
+  #### save as Rdata for package ####
+  ##  save as file named frs not facilities
   # save(frs, file = './data/frs.rdata')
   
   

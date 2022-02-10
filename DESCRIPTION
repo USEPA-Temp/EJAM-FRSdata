@@ -1,10 +1,13 @@
 Package: frsdata
 Type: Package
-Title: provides data on EPA Facility Registry System in rdata format
+Title: selected variables from EPA Facility Registry System in rdata format
 Version: 0.1.0
-Author: tbd
-Maintainer: tbd <yourself@somewhere.net>
-Description: Used by bufferfast package
+Author: Mark Corrales
+Maintainer: Mark Corrales <corrales.mark@epa.gov>
+Description: This just provides in R package format a few variables from 
+   the US EPA Facility Registry System in rdata format. 
+   It is used by the EJAM package to find the latitude and longitude of regulated facilities
+   based on their NAICS codes or Registry IDs.
 Requires: data.table, readr
 Depends: R (>= 3.5.0)
 License: What license is it under?
