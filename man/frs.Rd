@@ -3,109 +3,32 @@
 \docType{data}
 \name{frs}
 \alias{frs}
-\title{data.table of EPA-regulated sites in Facility Registry System
-
-This is now the 2021 version of FRS.
-You could look up sites by registry id, 
-but to look up by naics you need the long file with 
-one row per site-NAICS pair, so multple rows for one site if it is in multiple NAICS.
-That file was called facdata
-
-The 2016 version had only 1,129,481 rows (facilities), 22 columns.
-The 2021-09 version has 3.1 million rows, and currently retained only 9 columns for this package.
-  \preformatted{
-
-  Classes ‘data.table’ and 'data.frame':	3144206 obs. of  9 variables:
-  $ REGISTRY_ID   : chr  "110058283236" "110038070002" "110070215939" "110015787683" ...
-  $ PRIMARY_NAME  : chr  "ADAK COD COOPERATIVE LLC" "ADAK NAVAL AIR STATION SITE"
-  $ SITE_TYPE_NAME: chr  "STATIONARY" "STATIONARY" "STATIONARY" "STATIONARY" ...
-  $ PGM_SYS_ACRNMS: chr  "NPDES:AKU000292" "BRAC:AK4170024323, EIS:10606011"
-  $ INTEREST_TYPES: chr  "ICIS-NPDES UNPERMITTED"
-  $ NAICS_CODES   : chr  NA NA NA "928110" ...
-  $ SIC_CODES     : chr  "2091" "4952" "5171" "9711, OWNE" ...
-  $ lat           : num  51.9 51.9 51.9 51.9 51.9 ...
-  $ lon          : num  -177 -177 -177 -177 -177 ...
-
-
-  old 2016 file format for facilities table:
-
-  Classes ‘data.table’ and 'data.frame':	1,129,481 obs. of  22 variables:
-$ X                     : int  1 2 3 ...  Rownumber or unique ID
-$ REGISTRY_ID           : num       ***EPA facility registry system ID
-$ FAC_NAME              : Factor w/ 1474436 levels
-$ FAC_STREET            : Factor w/ 1181505 levels
-$ FAC_CITY              : Factor w/ 36799 levels
-$ FAC_STATE             : Factor w/ 71 levels
-$ FAC_ZIP               : Factor w/ 39257 levels
-$ FAC_COUNTY            : Factor w/ 4888 levels   County FIPS (5 digits)
-$ FAC_FIPS_CODE         : Factor w/ 6505 levels
-$ FAC_EPA_REGION        : int
-$ FAC_INDIAN_CNTRY_FLG  : Factor w/ 3 levels "","N","Y"
-$ FAC_FEDERAL_FLG       : Factor w/ 4 levels "","N","U","Y"
-$ FAC_US_MEX_BORDER_FLG : Factor w/ 3 levels "","N","Y"
-$ FAC_CHESAPEAKE_BAY_FLG: Factor w/ 2 levels "","Y"
-$ FAC_NAA_FLAG          : Factor w/ 2 levels "","Y"
-$ FAC_LAT               : num  34.7 ...   ***Latitude in decimal degrees
-$ FAC_LONG              : num  -118.1  ...  ***Longitude in decimal degrees
-$ FACT_LAT_RAD          : num  0.605  ...    in radians
-$ FACT_LONG_RAD         : num  -2.06  ...    in radians
-$ FAC_X                 : num  -1535.2  ... x location for quadtree
-$ FAC_Y                 : num  -2871  ... y location for quadtree
-$ FAC_Z                 : num  2253  ... z location for quadtree
-- attr(*, ".internal.selfref")=<externalptr>
-
-  }}
+\title{EPA Facility Registry System table of regulated sites}
 \description{
-data.table of EPA-regulated sites in Facility Registry System
+This is a 2021-09 snapshot version of EPA's FRS.
 
-This is now the 2021 version of FRS.
-You could look up sites by registry id, 
-but to look up by naics you need the long file with 
-one row per site-NAICS pair, so multple rows for one site if it is in multiple NAICS.
-That file was called facdata
+You can look up sites by REGISTRY_ID, 
+but to look up by NAICS_CODES you need the long file, which has 
+1 row per site-NAICS pair (multiple rows for a site in multiple NAICS).
+That file was called facdata 
 
 The 2016 version had only 1,129,481 rows (facilities), 22 columns.
-The 2021-09 version has 3.1 million rows, and currently retained only 9 columns for this package.
+The 2021-09 version has 3.1 million rows, and 
+retained only 9 columns for this package.
   \preformatted{
 
   Classes ‘data.table’ and 'data.frame':	3144206 obs. of  9 variables:
+  
   $ REGISTRY_ID   : chr  "110058283236" "110038070002" "110070215939" "110015787683" ...
   $ PRIMARY_NAME  : chr  "ADAK COD COOPERATIVE LLC" "ADAK NAVAL AIR STATION SITE"
   $ SITE_TYPE_NAME: chr  "STATIONARY" "STATIONARY" "STATIONARY" "STATIONARY" ...
+  
   $ PGM_SYS_ACRNMS: chr  "NPDES:AKU000292" "BRAC:AK4170024323, EIS:10606011"
   $ INTEREST_TYPES: chr  "ICIS-NPDES UNPERMITTED"
   $ NAICS_CODES   : chr  NA NA NA "928110" ...
   $ SIC_CODES     : chr  "2091" "4952" "5171" "9711, OWNE" ...
+  
   $ lat           : num  51.9 51.9 51.9 51.9 51.9 ...
-  $ lon          : num  -177 -177 -177 -177 -177 ...
-
-
-  old 2016 file format for facilities table:
-
-  Classes ‘data.table’ and 'data.frame':	1,129,481 obs. of  22 variables:
-$ X                     : int  1 2 3 ...  Rownumber or unique ID
-$ REGISTRY_ID           : num       ***EPA facility registry system ID
-$ FAC_NAME              : Factor w/ 1474436 levels
-$ FAC_STREET            : Factor w/ 1181505 levels
-$ FAC_CITY              : Factor w/ 36799 levels
-$ FAC_STATE             : Factor w/ 71 levels
-$ FAC_ZIP               : Factor w/ 39257 levels
-$ FAC_COUNTY            : Factor w/ 4888 levels   County FIPS (5 digits)
-$ FAC_FIPS_CODE         : Factor w/ 6505 levels
-$ FAC_EPA_REGION        : int
-$ FAC_INDIAN_CNTRY_FLG  : Factor w/ 3 levels "","N","Y"
-$ FAC_FEDERAL_FLG       : Factor w/ 4 levels "","N","U","Y"
-$ FAC_US_MEX_BORDER_FLG : Factor w/ 3 levels "","N","Y"
-$ FAC_CHESAPEAKE_BAY_FLG: Factor w/ 2 levels "","Y"
-$ FAC_NAA_FLAG          : Factor w/ 2 levels "","Y"
-$ FAC_LAT               : num  34.7 ...   ***Latitude in decimal degrees
-$ FAC_LONG              : num  -118.1  ...  ***Longitude in decimal degrees
-$ FACT_LAT_RAD          : num  0.605  ...    in radians
-$ FACT_LONG_RAD         : num  -2.06  ...    in radians
-$ FAC_X                 : num  -1535.2  ... x location for quadtree
-$ FAC_Y                 : num  -2871  ... y location for quadtree
-$ FAC_Z                 : num  2253  ... z location for quadtree
-- attr(*, ".internal.selfref")=<externalptr>
-
+  $ lon           : num  -177 -177 -177 -177 -177 ...
   }
 }
